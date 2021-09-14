@@ -22,7 +22,9 @@ RUN cd /tmp && \
     ln -s /usr/local/bin/cowsay /usr/bin/cowsay
 
 WORKDIR demo
-
+COPY ./main.sh .
+RUN chmod +x main.sh
 # CMD ["cowsay", "-f", "dragon-and-cow", "Nicolas Nuñez 45027"]
-# CMD ["zsh"]
+
+
 
