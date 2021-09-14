@@ -1,5 +1,8 @@
 FROM docker:dind
 
+VOLUME /certs/ca
+VOLUME /certs/client
+ENV DOCKER_TLS_CERTDIR=/certs
 RUN apk update && apk upgrade
 RUN apk add zsh && \
 apk add git && \
@@ -20,5 +23,6 @@ RUN cd /tmp && \
 
 WORKDIR demo
 
-CMD ["cowsay", "Nicolas Nuñez 45027"]
+# CMD ["cowsay", "-f", "dragon-and-cow", "Nicolas Nuñez 45027"]
+# CMD ["zsh"]
 
