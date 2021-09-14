@@ -1,24 +1,24 @@
 FROM docker:dind
 
-RUN apk update
-RUN apk upgrade
-RUN apk add zsh
-RUN apk add git
-RUN apk add fzf
-RUN cd /tmp
-RUN wget "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
-RUN sh install.sh
-RUN apk add figlet
+RUN apk update && apk upgrade
+RUN apk add zsh && \
+apk add git && \
+apk add fzf && \
+apk add perl
+
+# Install oh-my-zsh
+RUN cd /tmp && \
+wget "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh" \
+&& sh install.sh
 
 # Install cowsay
-RUN apk update && \
-    apk add --no-cache perl && \
-    cd /tmp && \
+RUN cd /tmp && \
     git clone https://github.com/jasonm23/cowsay.git  && \
     cd cowsay ; ./install.sh /usr/local && \
-    rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
-
+    rm -rf /var/cache/apk/* /var/tmp/* /tmp/* && \
+    ln -s /usr/local/bin/cowsay /usr/bin/cowsay
 
 WORKDIR demo
 
-# CMD ["figlet", "Nicolas Nunez 25027"]
+CMD ["cowsay", "Nicolas Nuñez 45027"]
+
