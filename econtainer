@@ -1,5 +1,7 @@
 # !usr/bin/sh
 
+# Author Nicolas Nunez
+
 select_container (){
 	container_selected=$(docker ps --format 'Id: {{.ID}}\tContainer🐳: {{.Names}}' | fzf --height=10)
 }
