@@ -1,0 +1,19 @@
+# !usr/bin/sh
+
+select_container (){
+	containers_selected=$(docker ps --format 'Id🔑: {{.ID}}\tName: {{.Names}}' | fzf --height=10 -m)  
+}
+
+select_container
+
+if [ $? -eq 0 ]
+then
+container_names=$(echo "$containers_selected" | awk '{print $4}')
+container_ids=$(echo "$containers_selected" | awk '{print $2}')
+echo $container_names
+echo $container_id
+echo "⛔ Stopping --" $container_names "-- with ids: " $container_ids 
+echo "$container_ids" | xargs docker stop > /dev/null
+echo "Bye 👋"
+fi
+

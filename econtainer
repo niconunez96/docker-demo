@@ -1,0 +1,16 @@
+# !usr/bin/sh
+
+select_container (){
+	container_selected=$(docker ps --format 'Id: {{.ID}}\tContainer🐳: {{.Names}}' | fzf --height=10)
+}
+
+select_container
+
+if [ $? -eq 0 ]
+then
+container_name=$(echo $container_selected | awk '{print $4}')
+container_id=$(echo $container_selected | awk '{print $2}')
+echo "Entering into \"$container_name\"🐳 with id $container_id"
+docker exec -it $container_id bash || docker exec -it $container_id sh 
+fi
+

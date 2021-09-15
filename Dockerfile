@@ -23,6 +23,8 @@ RUN cd /tmp && \
 
 WORKDIR demo
 COPY ./main.sh .
+COPY ./econtainer /usr/bin/
+COPY ./scontainers /usr/bin/
 RUN chmod +x main.sh
 # CMD ["cowsay", "-f", "dragon-and-cow", "Nicolas Nuñez 45027"]
 
