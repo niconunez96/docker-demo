@@ -14,20 +14,20 @@ sleep 4
 cowthink -y "Me pregunto como podria automatizar eso"
 
 sleep 4
-cowsay -f luke-koala "econtainer is for you...(seleccione un container con 'enter')"
+cowsay -f luke-koala "econtainer is for you...(seleccione un contenedor con 'enter')"
 sleep 6
-cowsay -f vader-koala "pss Para salir del container tenes que apretar ctrl+d" 
+cowsay -f vader-koala "pss Para salir del contenedor tenes que apretar ctrl+d" 
 sleep 6 
 
 econtainer || true
 
 sleep 4
-cowsay "Ahora paremos todos los containers que creamos"
+cowsay "Ahora paremos todos los contenedores que creamos"
 sleep 4
 cowsay -f luke-koala "scontainers is for you!"
 sleep 4
-cowsay -f vader-koala "pss para seleccionar varios containers usa 'tab'\
-y una vez seleccionado todos los containers apreta enter"
+cowsay -f vader-koala "pss para seleccionar varios contenedores usa 'tab'\
+ y una vez seleccionado todos los containers apreta enter"
 sleep 6
 
 scontainers | cowsay || true
